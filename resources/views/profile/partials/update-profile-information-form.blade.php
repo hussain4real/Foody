@@ -18,10 +18,46 @@
         @method('patch')
 
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+            <x-input-label for="first_name" :value="__('First Name')" />
+            <x-text-input id="first_name" name="first_name" type="text" class="mt-1 block w-full" :value="old('first_name', $user->first_name)" required autofocus autocomplete="first_name" />
+            <x-input-error class="mt-2" :messages="$errors->get('first_name')" />
         </div>
+
+        <div>
+            <x-input-label for="last_name" :value="__('Last Name')" />
+            <x-text-input id="last_name" name="last_name" type="text" class="mt-1 block w-full" :value="old('last_name', $user->last_name)" required autofocus autocomplete="last_name" />
+            <x-input-error class="mt-2" :messages="$errors->get('last_name')" />
+        </div>
+
+        <div>
+            <x-input-label for="mobile_number" :value="__('Mobile Number')" />
+            <x-text-input id="mobile_number" name="mobile_number" type="text" class="mt-1 block w-full" :value="old('mobile_number', $user->mobile_number)" required autofocus autocomplete="mobile_number" />
+            <x-input-error class="mt-2" :messages="$errors->get('mobile_number')" />
+        </div>
+
+        <div>
+            <x-input-label for="building_number" :value="__('Building Number')" />
+            <x-text-input id="building_number" name="building_number" type="text" class="mt-1 block w-full" :value="old('building_number', $user->building_number)" required autofocus autocomplete="building_number" />
+            <x-input-error class="mt-2" :messages="$errors->get('building_number')" />
+        </div>
+
+        <div>
+            <x-input-label for="street" :value="__('Street')" />
+            <x-text-input id="street" name="street" type="text" class="mt-1 block w-full" :value="old('street', $user->street)" required autofocus autocomplete="street" />
+            <x-input-error class="mt-2" :messages="$errors->get('street')" />
+        </div>
+
+        <div>
+            <x-input-label for="zone" :value="__('Zone')" />
+            <x-text-input id="zone" name="zone" type="text" class="mt-1 block w-full" :value="old('zone', $user->zone)" required autofocus autocomplete="zone" />
+            <x-input-error class="mt-2" :messages="$errors->get('zone')" />
+        </div>
+
+        <div>
+            <x-input-label for="city" :value="__('City')" />
+            <x-text-input id="city" name="city" type="text" class="mt-1 block w-full" :value="old('city', $user->city)" required autofocus autocomplete="city" />
+            <x-input-error class="mt-2" :messages="$errors->get('city')" />
+        city
 
         <div>
             <x-input-label for="email" :value="__('Email')" />

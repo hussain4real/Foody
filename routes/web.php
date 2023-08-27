@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Livewire\Foods\CreateFood;
 use App\Livewire\Foods\ViewFoods;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+//group food routes with prefix of food
+Route::prefix('food')->group(function () {
 
-Route::get('/foods', ViewFoods::class)->name('foods.index');
-
+    Route::get('/', ViewFoods::class)->name('food.index');
+    Route::get('/create', CreateFood::class)->name('food.store')->middleware('auth');
+});
 require __DIR__.'/auth.php';

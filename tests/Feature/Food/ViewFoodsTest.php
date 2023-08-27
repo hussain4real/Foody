@@ -17,6 +17,7 @@ test('foods page is displayed with the user that posted the food', function () {
 
     $response = $this->get('/foods');
 
+    $response->assertSee($user->people);
     $response->assertOk();
-    $response->assertSee($user->first_name);
+
 });

@@ -15,13 +15,19 @@ class ViewFoods extends Component
 
     public function render(): View
     {
-        $foods = Food::paginate(20);
-        //        dd(FoodResource::collection($foods));
+        $foods = Food::with('user:id,first_name,last_name', 'media')->paginate(5);
 
         return view('livewire.foods.view-foods')->
-            with([
-                'foods' => FoodResource::collection($foods),
-            ]);
+        with([
+            'foods' => FoodResource::collection($foods),
+        ]);
 
     }
 }
+//$images = $foods->pluck('images')->flatten(
+//    1
+//)->map(
+//    fn ($image) => json_decode($image)
+//)->flatten(
+//    1
+//)->toArray();

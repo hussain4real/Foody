@@ -12,16 +12,15 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
 
     <!-- Scripts -->
-    @livewireStyles
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-{{--    @bukStyles--}}
+    {{--    @bukStyles--}}
 </head>
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
 
     @include('components.layouts.navigation')
-{{--    @include('components.layouts.guest')--}}
+    {{--    @include('components.layouts.guest')--}}
 
     <!-- Page Heading -->
     @if (isset($header))
@@ -33,12 +32,11 @@
     @endif
 
     <!-- Page Content -->
-    <main >
+    <main>
         {{ $slot }}
     </main>
 </div>
 
-@livewireScripts
 {{--@bukScripts--}}
 </body>
 </html>

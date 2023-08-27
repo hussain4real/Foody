@@ -22,6 +22,7 @@ class FoodResource extends JsonResource
             'status' => $this->status,
             //user relationship
             'owner' => new UserResource($this->whenLoaded('user')),
+            'images' => MediaResource::collection($this->whenLoaded('media')),
         ];
     }
 }

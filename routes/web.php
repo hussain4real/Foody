@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Livewire\Foods\CreateFood;
+use App\Livewire\Foods\ViewFoods;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,5 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+//Food Routes
+
+Route::get('/food', ViewFoods::class)->name('food.index');
+Route::get('/food/create', CreateFood::class)->name('food.store')->middleware('auth');
 
 require __DIR__.'/auth.php';

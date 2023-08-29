@@ -25,7 +25,7 @@
                 <x-nav-link :href="route('food.store')" :active="request()->routeIs('food.create')">
                     <x-primary-button
                         class="hover:bg-green-400 hover:text-slate-100 hover:font-semibold">
-                        {{ __('Create Food') }}
+                        {{ __('Post Food') }}
                     </x-primary-button>
 
                 </x-nav-link>
@@ -127,6 +127,12 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('food.index')" :active="request()->routeIs('food.index')">
                 {{ __('Foods') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('food.store')" :active="request()->routeIs('food.create')">
+                <x-primary-button
+                    class="hover:bg-green-400 hover:text-slate-100 hover:font-semibold">
+                    {{ __('Post Food') }}
+                </x-primary-button>
             </x-responsive-nav-link>
         </div>
 

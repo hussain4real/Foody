@@ -29,10 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-//group food routes with prefix of food
-Route::prefix('food')->group(function () {
+//Food Routes
 
-    Route::get('/', ViewFoods::class)->name('food.index');
-    Route::get('/create', CreateFood::class)->name('food.store')->middleware('auth');
-});
+Route::get('/food', ViewFoods::class)->name('food.index');
+Route::get('/food/create', CreateFood::class)->name('food.store')->middleware('auth');
+
 require __DIR__.'/auth.php';

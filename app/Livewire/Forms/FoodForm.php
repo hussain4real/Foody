@@ -37,9 +37,13 @@ class FoodForm extends Form
     //        'form.photos.*.max' => 'Image size cannot be more than 1MB.',
     //    ])]
 
-    #[Rule('array|min:1|max:4|required')]
+    #[Rule('array|max:4')]
     #[Rule(['form.photos.*' => 'image|max:1024|mimes:jpg,jpeg,png'], attribute: [
         'form.photos.*' => 'photos',
+        //    ], message: [
+        //        'form.photos.*.image' => 'Please upload a valid image.',
+        //        'form.photos.*.mimes' => 'Please upload a valid image.',
+        //        'form.photos.*.max' => 'Image size cannot be more than 1MB.',
     ])]
     public $photos = [];
 

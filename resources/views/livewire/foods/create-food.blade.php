@@ -54,9 +54,10 @@
         </div>
         @if ($photos)
 
-            <div class="flex items-center justify-center snap-mandatory snap-x space-x-4 overflow-scroll py-4">
+            <div
+                class="flex flex-col md:flex-row items-center justify-center snap-mandatory snap-y md:snap-x gap-2 overflow-scroll py-4">
                 @foreach($photos as $photo)
-                    <div class="snap-start flex-shrink-0 w-48 h-48">
+                    <div class="snap-center flex-shrink-0 w-48 h-48">
                         <img src="{{ $photo->temporaryUrl() }}" class="w-48 h-48">
                     </div>
                 @endforeach

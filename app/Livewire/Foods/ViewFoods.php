@@ -15,7 +15,9 @@ class ViewFoods extends Component
 
     public function render(): View
     {
-        $foods = Food::with('user:id,first_name,last_name', 'media')->paginate(5);
+        $foods = Food::with('user:id,first_name,last_name', 'media')
+            ->where('for_sale', '=', true)
+            ->orderBy('created_at', 'desc')->paginate(10);
 
         return view('livewire.foods.view-foods')->
         with([
@@ -24,10 +26,3 @@ class ViewFoods extends Component
 
     }
 }
-//$images = $foods->pluck('images')->flatten(
-//    1
-//)->map(
-//    fn ($image) => json_decode($image)
-//)->flatten(
-//    1
-//)->toArray();

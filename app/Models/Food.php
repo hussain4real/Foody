@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\BooleanCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,6 +16,10 @@ class Food extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
+    protected $casts = [
+        'for_sale' => BooleanCast::class,
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -24,8 +29,11 @@ class Food extends Model implements HasMedia
         'name',
         'user_id',
         'description',
+        'price',
+        'quantity',
         'type',
         'status',
+        'for_sale',
     ];
 
     /**

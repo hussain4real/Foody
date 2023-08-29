@@ -12,19 +12,19 @@
         @foreach($foods as $food)
 
             <div
-                class="w-[20rem] lg:w-[22rem]  rounded overflow-hidden shadow bg-slate-200 backdrop-filter backdrop-blur-md bg-opacity-20">
+                class="w-[20rem] lg:w-[22rem] h-[32rem] rounded overflow-hidden shadow bg-slate-200 backdrop-filter backdrop-blur-md bg-opacity-20">
                 @if($food->media->count() > 0)
-                    <div class="snap-mandatory snap-x flex overflow-scroll">
+                    <div class="snap-mandatory snap-x flex overflow-scroll w-[22rem] h-[19rem]">
                         <div class="snap-start w-[22rem] flex-shrink-0">
                             <img
-                                class="object-cover w-full h-[16rem] rounded-lg"
+                                class="object-cover w-full rounded-lg"
                                 src="{{$food->media[0]->getUrl()}}"
                                 alt="food">
                         </div>
                         @if($food->media->count() > 1)
                             <div class="snap-start w-[22rem] flex-shrink-0">
                                 <img
-                                    class="object-cover w-full h-[16rem] rounded-lg"
+                                    class="object-cover w-full rounded-lg"
                                     src="{{$food->media[1]->getUrl()}}"
                                     alt="food">
                             </div>
@@ -33,8 +33,16 @@
                         @if($food->media->count() > 2)
                             <div class="snap-start w-[22rem] flex-shrink-0">
                                 <img
-                                    class="object-cover w-full h-[16rem] rounded-lg"
-                                    src="{{$food->media[1]->getUrl()}}"
+                                    class="object-cover w-full rounded-lg"
+                                    src="{{$food->media[2]->getUrl()}}"
+                                    alt="food">
+                            </div>
+                        @endif
+                        @if($food->media->count() > 3)
+                            <div class="snap-start w-[22rem] flex-shrink-0">
+                                <img
+                                    class="object-cover w-full rounded-lg"
+                                    src="{{$food->media[3]->getUrl()}}"
                                     alt="food">
                             </div>
                         @endif
@@ -53,6 +61,7 @@
                     <p class="text-gray-700 text-base grow-0">
                         {{$food->description}}
                     </p>
+
                     <div class="py-2 flex">
                         <a class="bg-slate-300 px-2 rounded drop-shadow-sm text-green-700 font-semibold" href=""
                            wire:navigate>

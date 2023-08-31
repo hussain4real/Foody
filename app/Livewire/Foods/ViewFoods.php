@@ -4,7 +4,6 @@ namespace App\Livewire\Foods;
 
 use App\Http\Resources\FoodResource;
 use App\Models\Food;
-use Illuminate\View\View;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -13,7 +12,7 @@ class ViewFoods extends Component
 {
     use WithPagination;
 
-    public function render(): View
+    public function render(): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
     {
         $foods = Food::with('user:id,first_name,last_name', 'media')
             ->where('for_sale', '=', true)

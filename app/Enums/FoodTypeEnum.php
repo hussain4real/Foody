@@ -2,7 +2,9 @@
 
 namespace App\Enums;
 
-enum FoodTypeEnum: string
+use Filament\Support\Contracts\HasLabel;
+
+enum FoodTypeEnum: string implements HasLabel
 {
     case FOOD = 'food';
     case DRINK = 'drink';
@@ -32,5 +34,10 @@ enum FoodTypeEnum: string
         $key = array_search($key, $oClass->getConstants());
 
         return $oClass->getConstant($key);
+    }
+
+    public function getLabel(): ?string
+    {
+        return $this->value;
     }
 }

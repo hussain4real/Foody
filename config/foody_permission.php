@@ -2,15 +2,15 @@
 
 return [
     'Foods' => [
-        'view food',
-        'create food',
-        'edit food',
-        'update food',
-        'delete food',
-        'view foods',
-        'view any food',
-        'restore food',
-        'force delete food',
+        'view Food',
+        'create Food',
+        'edit Food',
+        'update Food',
+        'delete Food',
+        'view Foods',
+        'view any Food',
+        'restore Food',
+        'force delete Food',
 
     ],
 ];

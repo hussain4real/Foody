@@ -21,6 +21,8 @@ class RolesSeeder extends Seeder
                 $this->assignAdminPermissions(role: $userRole);
             } elseif ($role === RolesEnum::SUPER_ADMIN) {
                 $userRole->syncPermissions(Permission::all());
+            } else {
+                $this->assignUserPermissions(role: $userRole);
             }
         });
 
@@ -29,12 +31,24 @@ class RolesSeeder extends Seeder
     private function assignAdminPermissions(Role $role): void
     {
         $role->syncPermissions([
-            'create food',
-            'view food',
-            'update food',
-            'delete food',
-            'view foods',
-            'view any food',
+            'create Food',
+            'view Food',
+            'update Food',
+            'delete Food',
+            'view Foods',
+            'view any Food',
+        ]);
+    }
+
+    private function assignUserPermissions(Role $role): void
+    {
+        $role->syncPermissions([
+            'create Food',
+            'view Food',
+            'update Food',
+            'delete Food',
+            'view Foods',
+            'view any Food',
         ]);
     }
 }

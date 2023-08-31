@@ -6,7 +6,7 @@ enum RolesEnum: string
 {
     case USER = 'user';
     case ADMIN = 'admin';
-    case SUPER_ADMIN = 'super admin';
+    case SUPER_ADMIN = 'Super Admin';
 
     public static function getConstants(): array
     {

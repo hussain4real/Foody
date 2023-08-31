@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     {
         $user = User::factory()
             ->count(1)
-            ->hasPostedFoods(1)
+            ->hasPostedFoods(5)
             ->create();
         //assign role to user foreach user
         $user->each(function ($user) {

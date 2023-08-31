@@ -13,8 +13,7 @@ class FoodSeeder extends Seeder
     public function run(): void
     {
         $food = Food::factory()
-            ->count(1)
-            ->forUser()
+            ->count(3)
             ->create();
     }
 }

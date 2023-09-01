@@ -16,7 +16,11 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('description');
-            $table->string('price')->nullable();
+            $table->string('cost_price')->nullable();
+            $table->string('selling_price')->nullable();
+            $table->dateTime('purchase_date')->nullable();
+            $table->dateTime('manufactured_date')->nullable();
+            $table->dateTime('expiry_date')->nullable();
             $table->string('quantity')->nullable();
             $table->string('type')->default(\App\Enums\FoodTypeEnum::FOOD->value);
             $table->string('status')->default(\App\Enums\FoodStatusEnum::AVAILABLE->value);

@@ -8,23 +8,23 @@
     @endif
 
     <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center items-center gap-y-6 outline-none focus:outline-none dark:bg-slate-800 mt-4">
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center items-center gap-y-6 outline-none focus:outline-none dark:bg-slate-800 pt-6 pb-2">
         @foreach($foods as $food)
 
             <div
-                class="w-[20rem] lg:w-[22rem] h-[32rem] rounded overflow-hidden shadow bg-slate-200 backdrop-filter backdrop-blur-md bg-opacity-20">
+                class="w-[20rem] lg:w-[22rem] h-[32rem] rounded-2xl overflow-hidden shadow bg-slate-400 backdrop-filter backdrop-blur-md bg-opacity-20">
                 @if($food->media->count() > 0)
                     <div class="snap-mandatory snap-x flex overflow-scroll w-[22rem] h-[19rem]">
                         <div class="snap-start w-[22rem] flex-shrink-0">
                             <img
-                                class="object-cover w-full rounded-lg"
+                                class="object-cover w-full h-fit rounded-lg"
                                 src="{{$food->media[0]->getUrl()}}"
                                 alt="food">
                         </div>
                         @if($food->media->count() > 1)
                             <div class="snap-start w-[22rem] flex-shrink-0">
                                 <img
-                                    class="object-cover w-full rounded-lg"
+                                    class="object-cover w-full h-fit rounded-lg"
                                     src="{{$food->media[1]->getUrl()}}"
                                     alt="food">
                             </div>
@@ -33,7 +33,7 @@
                         @if($food->media->count() > 2)
                             <div class="snap-start w-[22rem] flex-shrink-0">
                                 <img
-                                    class="object-cover w-full rounded-lg"
+                                    class="object-cover w-full h-fit rounded-lg"
                                     src="{{$food->media[2]->getUrl()}}"
                                     alt="food">
                             </div>
@@ -41,7 +41,7 @@
                         @if($food->media->count() > 3)
                             <div class="snap-start w-[22rem] flex-shrink-0">
                                 <img
-                                    class="object-cover w-full rounded-lg"
+                                    class="object-cover w-full h-fit rounded-lg"
                                     src="{{$food->media[3]->getUrl()}}"
                                     alt="food">
                             </div>
@@ -63,19 +63,23 @@
                     </p>
 
                     <div class="py-2 flex">
-                        <a class="bg-slate-300 px-2 rounded drop-shadow-sm text-green-700 font-semibold" href=""
-                           wire:navigate>
+                        <span>owner:</span>
+                        <p
+                            class="bg-slate-300 px-2 rounded drop-shadow-sm text-green-700 font-semibold"
+                        >
                             {{$food->user->first_name. ' ' .$food->user->last_name}}
-                        </a>
+
+
+                        </p>
                     </div>
                 </div>
                 <div class="flex items-center justify-between px-6 pt-2 pb-2">
                     <div
-                        class="bg-slate-200 rounded-full shadow px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{$food->type}}</div>
+                        class="bg-indigo-200 rounded-full shadow px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{$food->type}}</div>
                     <div
                         @class([
                             ($food->status == 'available') ?
-                             'bg-red-400 rounded-full px-2 py-1 text-sm font-semibold text-slate-100 mr-2 mb-2' :
+                             'bg-green-400 rounded-full px-2 py-1 text-sm font-semibold text-slate-100 mr-2 mb-2' :
                              (($food->status == 'unavailable') ?
                              'bg-slate-500 rounded-full px-2 py-1 text-sm font-semibold text-slate-100 mr-2 mb-2' :
                              'bg-green-500 rounded-full px-2 py-1 text-sm font-semibold text-slate-100 mr-2 mb-2')
@@ -84,7 +88,7 @@
                     </div>
                     <div class="">
                         <x-secondary-button class="hover:bg-green-400 hover:text-slate-100 hover:font-semibold">
-                            hello
+                            Interested
                         </x-secondary-button>
                     </div>
                 </div>

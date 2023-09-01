@@ -33,5 +33,5 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/food', ViewFoods::class)->name('food.index');
 Route::get('/food/create', CreateFood::class)->name('food.store')->middleware('auth');
-
+//Route::get('/users/{user}', \App\Filament\Pages\Auth\EditProfile::class)->name('users.show');
 require __DIR__.'/auth.php';

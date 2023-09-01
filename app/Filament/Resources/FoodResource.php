@@ -24,8 +24,6 @@ class FoodResource extends Resource
     public static function form(Form $form): Form
     {
 
-        $user = auth()->user();
-
         return $form
             ->schema([
 
@@ -55,13 +53,36 @@ class FoodResource extends Resource
                 Forms\Components\TextInput::make('description')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('price')
+                Forms\Components\TextInput::make('cost_price')
                     ->maxLength(255)
                     ->numeric()
                     ->inputMode('decimal')
                     ->suffixIcon('heroicon-m-banknotes'),
+                Forms\Components\TextInput::make('selling_price')
+                    ->maxLength(255)
+                    ->suffixIcon('heroicon-m-banknotes'),
                 Forms\Components\TextInput::make('quantity')
                     ->maxLength(255),
+                Forms\Components\DatePicker::make('manufactured_date')
+                    ->native(true)
+                    ->displayFormat('d/m/Y')
+                    ->closeOnDateSelection()
+                    ->live(onBlur: true),
+                Forms\Components\DatePicker::make('purchase_date')
+                    ->afterOrEqual('manufactured_date')
+                    ->before('tomorrow')
+                    ->native(true)
+                    ->displayFormat('d/m/Y')
+                    ->closeOnDateSelection()
+                    ->live(onBlur: true),
+                Forms\Components\DatePicker::make('expiry_date')
+                    ->after('manufactured_date')
+                    ->prefix('Expires')
+                    ->suffix('at midnight')
+                    ->native(true)
+                    ->displayFormat('d/m/Y')
+                    ->closeOnDateSelection()
+                    ->live(onBlur: true),
                 Forms\Components\Select::make('type')
                     ->suffixIcon('heroicon-m-cake')
                     ->options(FoodTypeEnum::class)
@@ -99,10 +120,22 @@ class FoodResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('description')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('price')
+                Tables\Columns\TextColumn::make('cost_price')
                     ->money('qar')
-                    ->color('cyan')
+                    ->color('yellow')
                     ->default(0)
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('selling_price')
+//                    ->money('qar')
+                    ->color('cyan')
+                    ->state(
+                        function (Model $record): string {
+                            return $record->selling_price == 0 ? 'free' : "QAR {$record->selling_price}";
+                        }
+                    )
+                    ->badge(function (Model $record, $state): string {
+                        return $record->selling_price == 0 ? $state : false;
+                    })
                     ->searchable(),
                 Tables\Columns\TextColumn::make('quantity')
                     ->numeric(decimalPlaces: 0)
@@ -135,11 +168,20 @@ class FoodResource extends Resource
                     ->limit(2)
                     ->limitedRemainingText()
                     ->collection('images'),
+                Tables\Columns\TextColumn::make('expiry_date')
+                    ->dateTime()
+                    ->since()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('purchase_date')
+                    ->dateTime()
+                    ->since()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('deleted_at')
                     ->dateTime()
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
                     ->since()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),

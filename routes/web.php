@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Livewire\Food\CreateFood;
+use App\Livewire\Foods\CreateFoods;
 use App\Livewire\Foods\ViewFoods;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +32,6 @@ Route::middleware('auth')->group(function () {
 //Food Routes
 
 Route::get('/food', ViewFoods::class)->name('food.index');
-Route::get('/food/create', CreateFood::class)->name('food.store')->middleware('auth');
+Route::get('/food/create', CreateFoods::class)->name('food.store')->middleware('auth');
 //Route::get('/users/{user}', \App\Filament\Pages\Auth\EditProfile::class)->name('users.show');
 require __DIR__.'/auth.php';

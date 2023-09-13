@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('quantity')->nullable();
             $table->string('type')->default(\App\Enums\FoodTypeEnum::FOOD->value);
             $table->string('status')->default(\App\Enums\FoodStatusEnum::AVAILABLE->value);
-            $table->boolean('for_sale')->default(false);
+            $table->boolean('for_listing')->default(false);
 
             $table->softDeletes();
             $table->timestamps();

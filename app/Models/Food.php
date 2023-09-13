@@ -38,7 +38,7 @@ class Food extends Model implements HasMedia
         'quantity',
         'type',
         'status',
-        'for_sale',
+        'for_listing',
     ];
 
     /**

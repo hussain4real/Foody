@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Livewire\Foods\CreateFood;
+use App\Livewire\Food\CreateFood;
 use App\Livewire\Foods\ViewFoods;
 use Illuminate\Support\Facades\Route;
 

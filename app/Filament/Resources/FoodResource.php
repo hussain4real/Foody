@@ -95,7 +95,7 @@ class FoodResource extends Resource
                     ->required()
                     ->default('available')
                     ->selectablePlaceholder(false),
-                Forms\Components\Toggle::make('for_sale')
+                Forms\Components\Toggle::make('for_listing')
                     ->required(),
                 Forms\Components\SpatieMediaLibraryFileUpload::make('photos')
                     ->multiple()
@@ -160,7 +160,7 @@ class FoodResource extends Resource
                         FoodStatusEnum::COLLECTED->value => 'info'
                     })
                     ->searchable(),
-                Tables\Columns\IconColumn::make('for_sale')
+                Tables\Columns\IconColumn::make('for_listing')
                     ->boolean(),
                 Tables\Columns\SpatieMediaLibraryImageColumn::make('photos')
                     ->circular()

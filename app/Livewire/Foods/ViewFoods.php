@@ -15,7 +15,7 @@ class ViewFoods extends Component
     public function render(): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
     {
         $foods = Food::with('user:id,first_name,last_name', 'media')
-            ->where('for_sale', '=', true)
+            ->where('for_listing', '=', true)
             ->orderBy('created_at', 'desc')->paginate(10);
 
         return view('livewire.foods.view-foods')->

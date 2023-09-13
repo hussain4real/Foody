@@ -7,7 +7,7 @@ use App\Livewire\Forms\FoodForm;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class CreateFood extends Component
+class CreateFoods extends Component
 {
     use WithFileUploads;
 

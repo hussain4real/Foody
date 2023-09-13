@@ -8,6 +8,7 @@ use App\Filament\Pages\Auth\Register;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationItem;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -29,6 +30,12 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->topNavigation()
+            ->navigationItems([
+                NavigationItem::make('Food Listing')
+                    ->url('/food', shouldOpenInNewTab: true)
+                    ->icon('heroicon-o-shopping-bag')
+                    ->sort(3),
+            ])
             ->id('admin')
             ->path('admin')
             ->login()

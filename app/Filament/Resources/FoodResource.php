@@ -50,7 +50,7 @@ class FoodResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('description')
+                Forms\Components\Textarea::make('description')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('cost_price')
@@ -102,6 +102,7 @@ class FoodResource extends Resource
                     ->responsiveImages()
                     ->imageEditor()
                     ->reorderable()
+                    ->panelLayout('grid')
                     ->collection('images')
                     ->image()
                     ->maxFiles(4)
@@ -163,11 +164,11 @@ class FoodResource extends Resource
                 Tables\Columns\IconColumn::make('for_listing')
                     ->boolean(),
                 Tables\Columns\SpatieMediaLibraryImageColumn::make('photos')
+                    ->collection('images')
                     ->circular()
                     ->stacked()
-                    ->limit(2)
-                    ->limitedRemainingText()
-                    ->collection('images'),
+                    ->limit(3)
+                    ->limitedRemainingText(false),
                 Tables\Columns\TextColumn::make('expiry_date')
                     ->dateTime()
                     ->since()
@@ -178,8 +179,8 @@ class FoodResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('deleted_at')
                     ->dateTime()
-                    ->sortable(),
-
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->since()
@@ -187,9 +188,11 @@ class FoodResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
+                    ->since()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: false),
             ])
+            ->poll('10s')
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
             ])

@@ -21,6 +21,11 @@ class FoodResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
     public static function form(Form $form): Form
     {
 
@@ -167,8 +172,8 @@ class FoodResource extends Resource
                     ->collection('images')
                     ->circular()
                     ->stacked()
-                    ->limit(3)
-                    ->limitedRemainingText(false),
+                    ->limit(2)
+                    ->limitedRemainingText(),
                 Tables\Columns\TextColumn::make('expiry_date')
                     ->dateTime()
                     ->since()

@@ -30,7 +30,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->spa()
-            ->topNavigation()
+//            ->topNavigation()
             ->navigationItems([
                 NavigationItem::make('Food Listing')
                     ->url('/food', shouldOpenInNewTab: true)
@@ -72,8 +72,8 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->plugin(FilamentSpatieRolesPermissionsPlugin::make())
-            ->authGuard('web');
-        //            ->sidebarCollapsibleOnDesktop();
+            ->authGuard('web')
+            ->sidebarCollapsibleOnDesktop();
     }
 
     public function boot(): void
